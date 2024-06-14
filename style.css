@@ -1,0 +1,107 @@
+@import url("https://fonts.cdnfonts.com/css/poppins");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(items/bg.png), url(items/bg2.jfif);
+  background-size: 100%;
+  background-repeat: no repeat;
+}
+.banner {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.slider {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: 10%;
+  left: calc(50% - 100px); /*! Calculation */
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 20s linear infinite;
+  z-index: 2;
+}
+@keyframes autoRun {
+  from {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+  }
+}
+.item {
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: rotateY(
+      calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+        /* ! Formula used for Y position */
+    )
+    translateZ(530px);
+}
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1520px, 100vw);
+  height: max-content;
+  padding-bottom: 96px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.content h1 {
+  font-family: Poppins;
+  font-size: 5em;
+  color: #25283b;
+  line-height: 1.5em;
+  z-index: 5;
+  background: linear-gradient(
+    180deg,
+    rgb(0, 0, 0) 5.8%,
+    rgb(178, 14, 14) 112.6%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.author {
+  font-family: Poppins;
+  text-align: right;
+  max-width: 300px;
+  background: linear-gradient(
+    109deg,
+    rgb(0, 0, 0) 5.8%,
+    rgb(178, 14, 14) 112.6%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.author h2 {
+  font-size: 2em;
+}
+.model {
+  background-image: url(items/model.png);
+  position: absolute;
+  width: 100%;
+  height: 72vh;
+  bottom: 0;
+  left: 0;
+  background-size: auto 130%;
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: 0;
+}
